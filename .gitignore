@@ -1,0 +1,6 @@
+# Python
+venv
+
+# Files
+*.csv
+*.pkl
