@@ -2,7 +2,9 @@
 
 0.946 - Regressão Logística
 0.988 - SVM, kernel rbf, c = 2.0
+0.998 - Neural Network
 
 # Census
 
 0.8433 - Regressão Logística
+0.8035 - Neural Network
