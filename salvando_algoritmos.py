@@ -28,7 +28,8 @@ tree.fit(xtrain, ytrain)
 
 svm = SVC(
     C=2.0,
-    kernel='rbf'
+    kernel='rbf',
+    probability=True
 )
 svm.fit(xtrain, ytrain)
 
