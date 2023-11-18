@@ -33,16 +33,35 @@ y = 0.5 * x**2 + x + 2 + np.random.randn(m, 1)
 # plt.scatter(x, y_new)
 
 
-# Gradient Descent with Momentum
+# # Gradient Descent with Momentum
+# x_b = np.c_[x**2, x, np.ones((m, 1))]
+# lr = 0.01
+# n_iter = 100
+# theta = np.random.randn(3, 1)
+# momentum = 0.9
+# beta = 0.9
+
+# for i in range(n_iter):
+#     gradients = (2/m) * x_b.T @ (x_b @ theta - y)
+#     momentum = beta * momentum - lr * gradients
+#     theta += momentum
+
+# y_new = x_b @ theta
+
+# plt.scatter(x, y)
+# plt.scatter(x, y_new)
+
+
+# Gradiente Acelerado de Nesterov
 x_b = np.c_[x**2, x, np.ones((m, 1))]
 lr = 0.01
-n_iter = 100
+n_iter = 50
 theta = np.random.randn(3, 1)
 momentum = 0.9
 beta = 0.9
 
 for i in range(n_iter):
-    gradients = (2/m) * x_b.T @ (x_b @ theta - y)
+    gradients = (2/m) * x_b.T @ (x_b @ (theta + beta * momentum) - y)
     momentum = beta * momentum - lr * gradients
     theta += momentum
 
