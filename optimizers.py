@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.linear_model import ElasticNet
 
 
 m = 100
@@ -91,24 +92,24 @@ y = 0.5 * x + 2 + np.random.randn(m, 1)
 
 
 
-# RMSProp
-x_b = np.c_[x, np.ones((m, 1))]
-lr = 0.01
-n_iter = 50
-theta = np.random.randn(2, 1)
-s = 0.9
-beta = 0.9
-e = 1 * 10**(-10)
+# # RMSProp
+# x_b = np.c_[x, np.ones((m, 1))]
+# lr = 0.01
+# n_iter = 50
+# theta = np.random.randn(2, 1)
+# s = 0.9
+# beta = 0.9
+# e = 1 * 10**(-10)
 
-for i in range(n_iter):
-    gradients = (2/m) * x_b.T @ (x_b @ theta - y)
-    s = beta * s + (1-beta) * gradients * gradients
-    theta -= np.divide(lr * gradients, np.sqrt(s + e))
+# for i in range(n_iter):
+#     gradients = (2/m) * x_b.T @ (x_b @ theta - y)
+#     s = beta * s + (1-beta) * gradients * gradients
+#     theta -= np.divide(lr * gradients, np.sqrt(s + e))
 
-y_new = x_b @ theta
+# y_new = x_b @ theta
 
-plt.scatter(x, y)
-plt.scatter(x, y_new)
+# plt.scatter(x, y)
+# plt.scatter(x, y_new)
 
 
 
@@ -138,3 +139,4 @@ plt.scatter(x, y_new)
 
 # plt.scatter(x, y)
 # plt.scatter(x, y_new)
+
