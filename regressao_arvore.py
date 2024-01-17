@@ -7,6 +7,8 @@ from sklearn.preprocessing import PolynomialFeatures
 import plotly.express as plx
 import plotly.io as pio
 import plotly.graph_objects as go
+from sklearn.tree import plot_tree
+import matplotlib.pyplot as plt
 
 pio.renderers.default = 'browser'
 
@@ -30,18 +32,22 @@ pio.renderers.default = 'browser'
 
 
 x = 2*np.random.randn(100, 1)
-y = 2 * np.random.randn(100, 1) + 0.5 * x**2 + 0.3 * x**3
+y = 2 * np.random.randn(100, 1) + 0.5 * x**2
 
-xp = PolynomialFeatures(degree=3).fit_transform(x)
+# xp = PolynomialFeatures(degree=1).fit_transform(x)
 
-tree = DecisionTreeRegressor(max_depth=2)
-tree.fit(xp, y)
-y_new = tree.predict(xp)
+tree = DecisionTreeRegressor()
+tree.fit(x, y)
+y_new = tree.predict(x)
 
 print(r2_score(y, y_new))
 
-fig = go.Figure()
-fig.add_trace(go.Scatter(x = x[:,0], y = y[:,0], mode='markers'))
-fig.add_trace(go.Scatter(x=x[:,0], y=y_new, mode='markers'))
-fig.show()
+# fig = go.Figure()
+# fig.add_trace(go.Scatter(x = x[:,0], y = y[:,0], mode='markers'))
+# fig.add_trace(go.Scatter(x=x[:,0], y=y_new, mode='markers'))
+# fig.show()
 
+print(plot_tree(tree))
+
+plt.scatter(x, y)
+plt.scatter(x, y_new)
