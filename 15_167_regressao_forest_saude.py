@@ -12,7 +12,7 @@ x = base['idade'].to_numpy().reshape(-1,1)
 y = base['custo'].to_numpy()
 
 # Model
-model = RandomForestRegressor()
+model = RandomForestRegressor(max_depth=3)
 model.fit(x, y)
 
 ynew = model.predict(x)
