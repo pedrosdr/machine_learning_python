@@ -22,3 +22,7 @@ fig = go.Figure(data=fig1.data + fig2.data)
 
 xr, yr = make_blobs(200, centers=5)
 px.scatter(x=xr[:,0], y=xr[:,1], color=yr.astype(str))
+
+kmeans = KMeans(5)
+kmeans.fit(xr)
+px.scatter(x=xr[:,0], y=xr[:,1], color=kmeans.labels_.astype(str))
